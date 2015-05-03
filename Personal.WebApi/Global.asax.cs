@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using AutoMapper;
 using Microsoft.Practices.Unity;
 using Personal.Entities;
 using Personal.Persistence;
@@ -19,7 +20,7 @@ namespace Personal.WebApi
             var container = new UnityContainer();
             container.RegisterType<IHrContext, InMemoryHrContext>(new ContainerControlledLifetimeManager());
             GlobalConfiguration.Configuration.DependencyResolver = new UnityResolver(container);
-
+            Mapper.CreateMap<Job, Job>();
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }
