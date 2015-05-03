@@ -21,6 +21,9 @@ namespace Personal.WebApi
             container.RegisterType<IHrContext, InMemoryHrContext>(new ContainerControlledLifetimeManager());
             GlobalConfiguration.Configuration.DependencyResolver = new UnityResolver(container);
             Mapper.CreateMap<Job, Job>();
+            Mapper.CreateMap<Department, Department>();
+            Mapper.CreateMap<Location, Location>();
+            Mapper.CreateMap<Employee, Employee>();
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }
