@@ -13,7 +13,6 @@ namespace Personal.Entities
         public DateTime HireDate { get; set; }
         public Job Job { get; set; }
         public decimal Salary { get; set; }
-        [Range(0.5,100)]
         public decimal CommisionPercent { get; set; }
         public Employee Manager { get; set; }
         public Department Department { get; set; }

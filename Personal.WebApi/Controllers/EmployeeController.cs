@@ -47,10 +47,9 @@ namespace Personal.WebApi.Controllers
         }
 
         // PUT: api/Employee/5
-        public IHttpActionResult Put(Employee employee)
+         public IHttpActionResult Put(Employee employee)
         {
-            if (ModelState.IsValid)
-            {
+            
                 var dbEmployee = context.Employees.Find(employee.EmployeeId);
                 if (dbEmployee != null)
                 {
@@ -58,9 +57,22 @@ namespace Personal.WebApi.Controllers
                     return Ok(context.SaveChanges());
                 }
                 return NotFound();
+            
+        }
+        
+        // PUT: api/Employee/id
+
+        public IHttpActionResult Put(int id, int newId)
+        {
+            var dbEmployee = context.Employees.FirstOrDefault(x => x.EmployeeId==id);
+
+            if (dbEmployee != null)
+            {
+                dbEmployee.EmployeeId = newId;
+                return Ok(context.SaveChanges());
             }
 
-            return BadRequest();
+            return NotFound();
         }
 
         // DELETE: api/Employee/5
